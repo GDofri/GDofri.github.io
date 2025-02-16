@@ -1,6 +1,6 @@
 // import * as React from "react";
 import "./styles/global.css";
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layout.tsx";
 import PolygonsContainer from "./Polygons.tsx"
 const Home = () => <Layout><h2>Home Page</h2></Layout>;
