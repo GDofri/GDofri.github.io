@@ -8,7 +8,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             {/* Header */}
             <header className="header">
                 <div className="name">
-                    <h1>My Website</h1>
+                    <h1>G. Dofri Viðarsson</h1>
                 </div>
                 <nav className="nav">
                     <Link to="/">Home</Link>
