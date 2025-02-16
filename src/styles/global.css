@@ -6,31 +6,31 @@ https://colorhunt.co/palette/fbf5dda6cdc616404ddda853
 
 */
 /* Light mode (default) */
-:root {
-    /* Background color for the entire page */
-    --background-color: #e5d0ac; /* Light gray */
+/*:root {*/
+/*    !* Background color for the entire page *!*/
+/*    --background-color: #e5d0ac; !* Light gray *!*/
 
-    /* Surface color for cards, containers, and sections */
-    --surface-color: #fef9e1; /* White background for cards */
+/*    !* Surface color for cards, containers, and sections *!*/
+/*    --surface-color: #fef9e1; !* White background for cards *!*/
 
-    /* Primary text color (headings, important text) */
-    --text-primary: #333333; /* Dark gray for readability */
+/*    !* Primary text color (headings, important text) *!*/
+/*    --text-primary: #333333; !* Dark gray for readability *!*/
 
-    /* Secondary text color (subtitles, muted text) */
-    --text-secondary: #555555; /* Slightly lighter gray for less emphasis */
+/*    !* Secondary text color (subtitles, muted text) *!*/
+/*    --text-secondary: #555555; !* Slightly lighter gray for less emphasis *!*/
 
-    /* Border color for elements (cards, inputs, dividers) */
-    --border-color: #e5d0ac; /* Light gray borders */
+/*    !* Border color for elements (cards, inputs, dividers) *!*/
+/*    --border-color: #e5d0ac; !* Light gray borders *!*/
 
-    /* Primary accent color (buttons, highlights, links) */
-    --accent-red-1: #a31d1d; /* Bright red for interactive elements */
+/*    !* Primary accent color (buttons, highlights, links) *!*/
+/*    --accent-red-1: #a31d1d; !* Bright red for interactive elements *!*/
 
-    /* Secondary accent color (hover effects, shadows) */
-    --accent-red-2: #6d2323; /* Darker red for contrast */
-}
+/*    !* Secondary accent color (hover effects, shadows) *!*/
+/*    --accent-red-2: #6d2323; !* Darker red for contrast *!*/
+/*}*/
 
 /* Dark Mode Styles (Auto Applied) */
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {*/
     :root {
         --background-color: #121212; /* Almost black for contrast */
         --surface-color: #1e1e1e; /* Dark gray for elevated surfaces */
@@ -40,7 +40,7 @@ https://colorhunt.co/palette/fbf5dda6cdc616404ddda853
         --accent-red-1: #a31d1d; /* Bright red for emphasis in dark mode */
         --accent-red-2: #6d2323; /* Deep red for stronger contrast */
     }
-}
+/*}*/
 
 
 html, body, #root {
