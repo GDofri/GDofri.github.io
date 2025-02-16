@@ -11,11 +11,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     <h1>G. Dofri Viðarsson</h1>
                 </div>
                 <nav className="nav">
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/projects">Projects</Link>
+                    {/*<Link to="/">Home</Link>*/}
+                    {/*<Link to="/about">About</Link>*/}
+                    {/*<Link to="/projects">Projects</Link>*/}
                     <Link to="/polygons">Polygons</Link>
-                    <Link to="/contact">Contact</Link>
+                    {/*<Link to="/contact">Contact</Link>*/}
                 </nav>
             </header>
 
