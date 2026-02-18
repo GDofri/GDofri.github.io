@@ -16,6 +16,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     {/*<Link to="/projects">Projects</Link>*/}
                     {/*<Link to="/polygons">Polygons</Link>*/}
                     <Link to="/mandelbrot">Mandelbrot</Link>
+                    <Link to="/thesis">Thesis</Link>
                     {/*<Link to="/contact">Contact</Link>*/}
                 </nav>
             </header>

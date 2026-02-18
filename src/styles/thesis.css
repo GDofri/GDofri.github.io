@@ -1,0 +1,18 @@
+
+
+
+p {
+    text-align: justify;
+    max-width: 600px;
+}
+h1{
+    text-align: center;
+}
+
+.abstract_container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

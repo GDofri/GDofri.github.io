@@ -4,6 +4,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layout.tsx";
 // import PolygonsContainer from "./Polygons.tsx"
 import MandelbrotContainer from "./Mandelbrot.tsx";
+import Thesis from "./Thesis.tsx";
 const Home = () => <Layout><h2>Home Page</h2></Layout>;
 // const About = () => <Layout><h2>About Page</h2></Layout>;
 // const Projects = () => <Layout><h2>Projects</h2></Layout>;
@@ -16,6 +17,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/thesis" element={<Thesis />} />
                 {/*<Route path="/about" element={<About />} />*/}
                 {/*<Route path="/projects" element={<Projects />} />*/}
                 {/*<Route path="/polygons" element={<PolygonsComponent />} />*/}
