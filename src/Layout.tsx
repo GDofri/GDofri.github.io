@@ -14,29 +14,21 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     {/*<Link to="/">Home</Link>*/}
                     {/*<Link to="/about">About</Link>*/}
                     {/*<Link to="/projects">Projects</Link>*/}
-                    <Link to="/polygons">Polygons</Link>
+                    {/*<Link to="/polygons">Polygons</Link>*/}
+                    <Link to="/mandelbrot">Mandelbrot</Link>
                     {/*<Link to="/contact">Contact</Link>*/}
                 </nav>
             </header>
 
             {/* Main Content */}
             <div className="main-content">
-                {/* Sidebar (Optional) */}
-                <aside className="sidebar">
-                    <p>Sidebar Content</p>
-                    <ul>
-                        {/*<li><Link to="/category1">Category 1</Link></li>*/}
-                        {/*<li><Link to="/category2">Category 2</Link></li>*/}
-                    </ul>
-                </aside>
-
                 {/* Page Content */}
                 <main className="main-section">{children}</main>
             </div>
 
             {/* Footer */}
             <footer className="footer">
-                <p>&copy; {new Date().getFullYear()} My Website. All Rights Reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Gunnar Dofri Viðarsson. All Rights Reserved.</p>
             </footer>
         </div>
     );

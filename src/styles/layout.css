@@ -1,7 +1,6 @@
 /* General Page Styling */
 
 html, body {
-    height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -18,9 +17,15 @@ body {
 
 /* Layout Wrapper */
 .layout {
+    background-color: var(--surface-color);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    justify-content: center;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 0 1rem;
+    border-radius: 20px;
 }
 
 /* Header */
@@ -65,16 +70,8 @@ body {
 .main-content {
     display: flex;
     flex: 1;
-    /*padding: 20px;*/
-    gap: 20px;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 250px;
-    background-color: var(--surface-color);
     padding: 20px;
-    border-right: 1px solid var(--border-color);
+    gap: 20px;
 }
 
 /* Main Section */
@@ -94,11 +91,5 @@ body {
 @media (max-width: 768px) {
     .main-content {
         flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
     }
 }
