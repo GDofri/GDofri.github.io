@@ -2,9 +2,17 @@ import {useRef, useEffect, useState} from "react";
 import p5 from "p5";
 import './styles/mandelbrot.css';
 
+
+interface Bounds {
+    'minX': number,
+    'minY': number,
+    'maxX': number,
+    'maxY': number
+}
+
 interface MandelbrotProps {
     depth: number;
-    bounds: Object;
+    bounds: Bounds;
     setBounds: Function;
 }
 
@@ -52,8 +60,8 @@ function colorCubeHelix(depth: number,
     return [red, green, blue, 255];
 }
 
-let lastPixels = null;
-let lastParams = null;
+let lastPixels: null | number[] = null;
+let lastParams: null | Object = null ;
 
 /**
  * Translates pixel coordinates to the cartesian/complex plane.
@@ -81,7 +89,7 @@ function getCartesian(row: number, col: number,
 function drawMandelbrot(p: p5, maxDepth: number,
                        canvasWidth: number,
                        canvasHeight: number,
-                       bounds: Object,
+                       bounds: Bounds,
                        ): void {
 
     let params = {
@@ -94,6 +102,7 @@ function drawMandelbrot(p: p5, maxDepth: number,
     // If settings are unchanged, use cached picture.
     if( JSON.stringify(params) == JSON.stringify(lastParams) ) {
 
+        if(lastPixels == null) {return}
         p.pixels=lastPixels;
         p.updatePixels();
         return;
@@ -278,7 +287,7 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
 const MandelbrotContainer: React.FC = () => {
 
     const [depth, setDepth] = useState(30);
-    let initialBounds = {
+    let initialBounds: Bounds = {
         "minX": -2.0,
         "minY": -1.2,
         "maxX":  0.6,
