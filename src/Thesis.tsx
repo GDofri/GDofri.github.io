@@ -1,5 +1,4 @@
 
-import thesis from 'assets/Vidarsson_Masters_Thesis.pdf'
 import Layout from "./Layout.tsx";
 import './styles/thesis.css';
 
