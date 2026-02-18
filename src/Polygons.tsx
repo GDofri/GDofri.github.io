@@ -16,20 +16,20 @@ const Polygons: React.FC<PolygonProps> = ({numPoints, depth, maxOffset, seed}) =
         if (!sketchRef.current) return;
         const sketch = (p: p5) => {
             p.setup = () => {
-                let width = 400;
-                let height = 400;
+                const width = 400;
+                const height = 400;
                 p.randomSeed(parseInt(String(seed * 1000)));
                 p.createCanvas(width, height).parent(sketchRef.current!);
                 p.background(200);
-                let strokeMax = 100;
+                const strokeMax = 100;
                 p.strokeWeight(2);
-                let radius = 150;
-                let arcDelta = 2 * p.PI / numPoints;
-                let startAngle = p.PI / 2;
+                const radius = 150;
+                const arcDelta = 2 * p.PI / numPoints;
+                const startAngle = p.PI / 2;
                 let points: number[][] = [];
                 let nextPoints: number[][] = [];
-                let offsets: number[][] = [];
-                let strokeDelta = strokeMax / (depth-1);
+                const offsets: number[][] = [];
+                const strokeDelta = strokeMax / (depth-1);
 
                 for(let i = 0; i < maxPoints; i++) {
                     offsets.push([p.random()*maxOffset-maxOffset/2, p.random()*maxOffset-maxOffset/2]);
@@ -58,8 +58,8 @@ const Polygons: React.FC<PolygonProps> = ({numPoints, depth, maxOffset, seed}) =
                     }
                     for( let i = 0; i < numPoints ; i++)
                     {
-                        let current = points[i];
-                        let next = points[(i+1)%(numPoints)]
+                        const current = points[i];
+                        const next = points[(i+1)%(numPoints)]
                         nextPoints.push([(current[0] + next[0]) / 2, (current[1] + next[1]) / 2 ] );
                         // p.ellipse(nextPoints[i][0],nextPoints[i][1], 5, 5);
                     }

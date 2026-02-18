@@ -13,7 +13,7 @@ interface Bounds {
 interface MandelbrotProps {
     depth: number;
     bounds: Bounds;
-    setBounds: Function;
+    setBounds: (value: (((prevState: Bounds) => Bounds) | Bounds)) => void;
 }
 
 /**
@@ -42,7 +42,7 @@ function colorCubeHelix(depth: number,
     let fraction = (depth / maxDepth);
     let angle = 2 * Math.PI*(start/3.0+1.0+rotations*fraction);
     fraction = fraction**gamma
-    let amplitude = hue*fraction*(1-fraction)/2;
+    const amplitude = hue*fraction*(1-fraction)/2;
     let red   = fraction+amplitude*(-0.14861*Math.cos(angle)+1.78277*Math.sin(angle));
     let green = fraction+amplitude*(-0.29227*Math.cos(angle)-0.90649*Math.sin(angle))
     let blue  = fraction+amplitude*(+1.97294*Math.cos(angle));
@@ -61,7 +61,7 @@ function colorCubeHelix(depth: number,
 }
 
 let lastPixels: null | number[] = null;
-let lastParams: null | Object = null ;
+let lastParams: null | object = null ;
 
 /**
  * Translates pixel coordinates to the cartesian/complex plane.
@@ -81,8 +81,8 @@ function getCartesian(row: number, col: number,
                       minX: number, minY:number): [number, number] {
 
     // Move from (0,0) top with +y as down into (minX, maxY) top, -y as down
-    let x = mandelWidth*(col/canvasWidth)+minX;
-    let y = (mandelHeight*((canvasHeight-row)/canvasHeight)+minY);
+    const x = mandelWidth*(col/canvasWidth)+minX;
+    const y = (mandelHeight*((canvasHeight-row)/canvasHeight)+minY);
     return [x, y];
 }
 
@@ -92,7 +92,7 @@ function drawMandelbrot(p: p5, maxDepth: number,
                        bounds: Bounds,
                        ): void {
 
-    let params = {
+    const params = {
         "maxDepth": maxDepth,
         "canvasWidth": canvasWidth,
         "canvasHeight": canvasHeight,
@@ -108,24 +108,24 @@ function drawMandelbrot(p: p5, maxDepth: number,
         return;
     }
 
-    let mandelWidth = bounds['maxX'] - bounds['minX'];
-    let mandelHeight = bounds['maxY'] - bounds['minY'];
+    const mandelWidth = bounds['maxX'] - bounds['minX'];
+    const mandelHeight = bounds['maxY'] - bounds['minY'];
 
     // Precalculate the color for each depth level.
-    let chStart = 1;
-    let chRotations = 2;
-    let chHue = 2.;
-    let chGamma = 1.0;
+    const chStart = 1;
+    const chRotations = 2;
+    const chHue = 2.;
+    const chGamma = 1.0;
     const colorMap = new Map<number, number|[number, number, number, number]>();
     for( let d=0; d <= maxDepth; d++){
-        let color = colorCubeHelix(d, maxDepth, chStart, chRotations, chHue, chGamma);
+        const color = colorCubeHelix(d, maxDepth, chStart, chRotations, chHue, chGamma);
         colorMap.set(d, color);
     }
 
     // Main mandelbrot loop
     for (let row = 0; row < canvasHeight; row++) {
         for (let col = 0; col < canvasWidth; col++) {
-            let [x0, y0] = getCartesian(row, col,
+            const [x0, y0] = getCartesian(row, col,
                 canvasWidth, canvasHeight,
                 mandelWidth, mandelHeight,
                 bounds['minX'], bounds['minY']);
@@ -133,12 +133,12 @@ function drawMandelbrot(p: p5, maxDepth: number,
             let y = y0;
             let d = 0;
             while (d < maxDepth && x * x + y * y < 4) {
-                let xtemp = x * x - y * y + x0;
+                const xtemp = x * x - y * y + x0;
                 y = 2 * x * y + y0;
                 x = xtemp;
                 d++;
             }
-            let color = colorMap.get(d);
+            const color = colorMap.get(d);
             if (color) {
                 p.set(col, row, color);
             }
@@ -160,14 +160,14 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
 
     useEffect(() => {
         if (!sketchRef.current) return;
-        let width = sketchRef.current.clientWidth;
+        const width = sketchRef.current.clientWidth;
         // Image bounds in cartesian space
         let mandelWidth = bounds['maxX'] - bounds['minX'];
         let mandelHeight = bounds['maxY'] - bounds['minY'];
 
         // Canvas size
         // let width = 2;
-        let height = width * mandelHeight / mandelWidth;
+        const height = width * mandelHeight / mandelWidth;
 
         const sketch = (p: p5) => {
             p.setup = () =>
@@ -192,8 +192,8 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
             }
 
             function getRectWidth(){
-                let deltaX = Math.abs(p.mouseX - firstX);
-                let deltaY = Math.abs(p.mouseY - firstY);
+                const deltaX = Math.abs(p.mouseX - firstX);
+                const deltaY = Math.abs(p.mouseY - firstY);
                 return Math.max( deltaX, deltaY );
             }
 
@@ -233,13 +233,13 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
                 if(!isMouseInCanvas()) return;
                 if(Math.abs(getRectWidth()) >= 20){
 
-                    let [secondX, secondY] = getRectSecondCorner();
+                    const [secondX, secondY] = getRectSecondCorner();
 
-                    let [x1, y1] = getCartesian(firstY, firstX, width, height, mandelWidth, mandelHeight, bounds['minX'], bounds['minY']);
-                    let [x2, y2] = getCartesian(secondY, secondX, width, height, mandelWidth, mandelHeight, bounds['minX'], bounds['minY']);
+                    const [x1, y1] = getCartesian(firstY, firstX, width, height, mandelWidth, mandelHeight, bounds['minX'], bounds['minY']);
+                    const [x2, y2] = getCartesian(secondY, secondX, width, height, mandelWidth, mandelHeight, bounds['minX'], bounds['minY']);
 
                     // Update mandelbrot plot bounds
-                    let newBounds = {
+                    const newBounds = {
                         'minX': Math.min(x1, x2),
                         'minY': Math.min(y1, y2),
                         'maxX': Math.max(x1, x2),
@@ -257,7 +257,7 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
             p.draw = () => {
                 drawMandelbrot(p, depth, width, height, bounds);
                 if(isPressed){
-                    let [secondX, secondY] = getRectSecondCorner();
+                    const [secondX, secondY] = getRectSecondCorner();
 
                     if(Math.abs(getRectWidth()) < 20){
                         p.stroke(255,0,0,255);
@@ -277,7 +277,7 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
             lastParams = null;
             lastPixels = null;
         }
-    }, [depth, bounds]);
+    }, [depth, bounds, setBounds]);
 
     return <div ref={sketchRef} />;
 }
@@ -287,7 +287,7 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
 const MandelbrotContainer: React.FC = () => {
 
     const [depth, setDepth] = useState(30);
-    let initialBounds: Bounds = {
+    const initialBounds: Bounds = {
         "minX": -2.0,
         "minY": -1.2,
         "maxX":  0.6,
