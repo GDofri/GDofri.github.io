@@ -1,6 +1,9 @@
 
 import Layout from "./Layout.tsx";
 import './styles/thesis.css';
+import thesisPdfUrl from './assets/Vidarsson_Masters_Thesis.pdf'
+
+// let thesisPdfUrlNonNull: string = thesisPdfUrl;
 
 const ThesisContainer: React.FC = () => {
 
@@ -31,10 +34,8 @@ const ThesisContainer: React.FC = () => {
                 benefit statistical illuminant estimation, while deep models may require different architectures
                 or more data to reliably exploit spectral inputs.
             </p>
-
-        <a href="/src/assets/Vidarsson_Masters_Thesis.pdf" download>Download full thesis PDF</a>
+            <a href={thesisPdfUrl as string} download>Download full thesis PDF</a>
         </div>
-
 
     </Layout>
 }

@@ -5,4 +5,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: "/",
+  build: {
+    rollupOptions: {
+      output: {
+        // Deliberatly not add has to asset names so that the downloadable pdf will have a clean name.
+        assetFileNames: `assets/[name].[ext]`
+      }
+    }
+  },
 })
