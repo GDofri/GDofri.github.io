@@ -14,6 +14,9 @@ const About: React.FC = () => {
             and a JS+HTML frontend as well as an air traffic simulation product used for training air traffic controllers written primarily in modern C++ with a QT5 frontend.
             Both products are currently in use.
         </p>
+        <p>
+            The purpose of this site is to have a single place to host the small visualization projects that I like to program from time to time.
+        </p>
         {/*<p>*/}
         {/*    In my free time I enjoy spending time outside, dancing lindy hop and chatting with friends.*/}
         {/*</p>*/}
