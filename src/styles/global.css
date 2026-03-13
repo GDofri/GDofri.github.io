@@ -51,3 +51,6 @@ html, body, #root {
 h1 {
     font-size: 3rem;
 }
+a {
+    color: #04AA6D;
+}
