@@ -1,33 +1,31 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import "./styles/layout.css"; // Ensure this file is imported
+import { NavLink, NavLinkRenderProps} from "react-router-dom";
+import "./styles/layout.css";
+
+const navLinkStyles = (props: NavLinkRenderProps) : React.CSSProperties  => ({
+    textDecoration: props.isActive ? 'underline':'none'
+});
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <div className="layout">
-            {/* Header */}
             <header className="header">
                 <div className="name">
                     <h1>G. Dofri Viðarsson</h1>
                 </div>
                 <nav className="nav">
-                    {/*<Link to="/">Home</Link>*/}
-                    {/*<Link to="/about">About</Link>*/}
-                    {/*<Link to="/projects">Projects</Link>*/}
-                    {/*<Link to="/polygons">Polygons</Link>*/}
-                    <Link to="/mandelbrot">Mandelbrot</Link>
-                    <Link to="/thesis">Thesis</Link>
-                    {/*<Link to="/contact">Contact</Link>*/}
+                    <NavLink to="/" style={navLinkStyles}>About Me</NavLink>
+                    <NavLink to="/mandelbrot" style={navLinkStyles}>Mandelbrot</NavLink>
+                    <NavLink to="/cubehelix" style={navLinkStyles}>CubeHelix</NavLink>
+                    <NavLink to="/thesis" style={navLinkStyles}>MSc. Thesis</NavLink>
                 </nav>
             </header>
 
-            {/* Main Content */}
             <div className="main-content">
-                {/* Page Content */}
+
                 <main className="main-section">{children}</main>
             </div>
 
-            {/* Footer */}
             <footer className="footer">
                 <p>&copy; {new Date().getFullYear()} Gunnar Dofri Viðarsson. All Rights Reserved.</p>
             </footer>

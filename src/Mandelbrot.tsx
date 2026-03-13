@@ -40,7 +40,7 @@ function colorCubeHelix(depth: number,
                     ): [number, number, number, number] {
 
     let fraction = (depth / maxDepth);
-    let angle = 2 * Math.PI*(start/3.0+1.0+rotations*fraction);
+    const angle = 2 * Math.PI*(start/3.0+1.0+rotations*fraction);
     fraction = fraction**gamma
     const amplitude = hue*fraction*(1-fraction)/2;
     let red   = fraction+amplitude*(-0.14861*Math.cos(angle)+1.78277*Math.sin(angle));
@@ -245,11 +245,21 @@ const Mandelbrot: React.FC<MandelbrotProps> = ({depth, bounds, setBounds}) => {
                         'maxX': Math.max(x1, x2),
                         'maxY': Math.max(y1, y2),
                     }
-                    setBounds(newBounds);
+
 
                     // Update the "global" mandelbrot plot width and height
-                    mandelWidth = bounds['maxX'] - bounds['minX'];
-                    mandelHeight = bounds['maxY'] - bounds['minY'];
+                    const newMandelWidth = newBounds['maxX'] - newBounds['minX'];
+                    const newMandelHeight = newBounds['maxY'] - newBounds['minY'];
+
+                    if( newMandelWidth <= 0 || newMandelHeight <= 0 ){
+                        return;
+                    }
+
+                    setBounds(newBounds);
+                    //
+                    // // Update the "global" mandelbrot plot width and height
+                    // mandelWidth = bounds['maxX'] - bounds['minX'];
+                    // mandelHeight = bounds['maxY'] - bounds['minY'];
 
                 }
             }

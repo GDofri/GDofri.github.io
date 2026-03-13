@@ -3,8 +3,6 @@ import Layout from "./Layout.tsx";
 import './styles/thesis.css';
 import thesisPdfUrl from './assets/Vidarsson_Masters_Thesis.pdf'
 
-// let thesisPdfUrlNonNull: string = thesisPdfUrl;
-
 const ThesisContainer: React.FC = () => {
 
     return <Layout>
@@ -15,13 +13,15 @@ const ThesisContainer: React.FC = () => {
             <h2>Hyperspectral Color Constancy in Low Dimensions</h2>
 
             <h3>Abstract</h3>
-            <p>
+            <p className='thesis_p'>
                 Illuminant estimation aims to recover the scene illumination to achieve color constancy,
                 i.e., an illuminant-independent representation of surface colors. This problem is inherently
                 ill-posed, since many combinations of surface reflectance and illumination can produce
                 the same measurements. Hyperspectral imaging reduces this ambiguity by capturing richer
                 spectral information, but its high dimensionality makes it difficult to process and motivates
                 compact spectral representations.
+            </p>
+            <p className='thesis_p'>
                 In this thesis, we study how low-dimensional projections of hyperspectral data compare to
                 RGB for illuminant estimation. Using the KAUST-MIE hyperspectral reflectance image dataset,
                 we synthetically relight scenes with CIE standard illuminants and simulate RGB observations

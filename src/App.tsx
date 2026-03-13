@@ -5,23 +5,26 @@ import Layout from "./Layout.tsx";
 // import PolygonsContainer from "./Polygons.tsx"
 import MandelbrotContainer from "./Mandelbrot.tsx";
 import Thesis from "./Thesis.tsx";
-const Home = () => <Layout><h2>Home Page</h2></Layout>;
+import About from "./About.tsx";
+import CubeHelixContainer from "./cubehelix.tsx";
 // const About = () => <Layout><h2>About Page</h2></Layout>;
 // const Projects = () => <Layout><h2>Projects</h2></Layout>;
 // const PolygonsComponent = () => <Layout><PolygonsContainer/></Layout>;
 const MandelbrotComponent = () => <Layout><MandelbrotContainer/></Layout>;
+const CubeHelixComponent = () => <Layout><CubeHelixContainer/></Layout>;
 // const Contact = () => <Layout><h2>Contact Page</h2></Layout>;
 
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<About />} />
                 <Route path="/thesis" element={<Thesis />} />
                 {/*<Route path="/about" element={<About />} />*/}
                 {/*<Route path="/projects" element={<Projects />} />*/}
                 {/*<Route path="/polygons" element={<PolygonsComponent />} />*/}
                 <Route path="/mandelbrot" element={<MandelbrotComponent />} />
+                <Route path="/cubehelix" element={<CubeHelixComponent />} />
                 {/*<Route path="/contact" element={<Contact />} />*/}
             </Routes>
         </Router>
