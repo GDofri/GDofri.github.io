@@ -241,9 +241,6 @@ const CubeHelixCube: React.FC<CubeHelixProps> = (props) => {
                 );
                 cam.lookAt(drawScale/2,-drawScale/2,drawScale/2);
 
-                // @ts-expect-error: Library accepts 4 inputs at runtime.
-                // cam.perspective(undefined, undefined, 2, 5000);
-
             }
 
             p.draw = () => {
